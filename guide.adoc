@@ -10,7 +10,7 @@ docker build . -t docker-vscode:latest
 
 docker run --rm -ti --net="host" --name=vscode -e DISPLAY=$DISPLAY -e MYUID=$(id -u) -e MYGID=$(id -g) \
 -e MYUSERNAME=$(id -un) -v /tmp/.X11-unix:/tmp/.X11-unix \
--v /home/dpm/repos/docker-vscode/vscode-indalo-ats:/home/dpm/.vscode \
--v /home/dpm/.config/Code:/home/dpm/.config/Code \
--v /home/dpm/code/indalo2/entities/acceptance-test:/home/dpm/project \
--w /home/dpm/project docker-vscode:latest
+-v $HOME/repos/docker-vscode/vscode-configs/vscode-indalo-ats:$HOME/.vscode \
+-v $HOME/.config/Code:$HOME/.config/Code \
+-v $HOME/code/indalo2/entities/acceptance-test:$HOME/project \
+-w $HOME/project docker-vscode:latest
