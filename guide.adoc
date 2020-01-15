@@ -1,0 +1,11 @@
+= Guide for dockerizing vscode
+:toc:
+
+== Build
+
+docker build . -t docker-vscode:latest
+
+
+== Running
+
+docker run --rm -ti --net="host" --name=vscode -e DISPLAY=$DISPLAY -e MYUID=$(id -u) -e MYGID=$(id -g)     -e MYUSERNAME=$(id -un)  -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/dpm/repos/docker-vscode/.vscode-indalo-ats:/home/dpm/.vscode -v /home/dpm/code/indalo2/entities/acceptance-test:/home/dpm/project -w /home/dpm/project docker-vscode:latest
